@@ -1,9 +1,6 @@
 ﻿using Store.Models.ApplicationDbContext;
 using Store.Models.Interfaces;
-using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Threading.Tasks;
 
 namespace Store.Models.Repository
 {
@@ -15,9 +12,5 @@ namespace Store.Models.Repository
             this._context = context;
         }
         public IQueryable<Product> Products => _context.ProductT;
-        public void AddProduct()
-        {
-
-        }
     }
 }

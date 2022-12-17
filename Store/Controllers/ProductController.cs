@@ -1,11 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Store.Models.Interfaces;
 using Store.Models.ViewModels;
-using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Threading.Tasks;
-
 namespace Store.Controllers
 {
     public class ProductController : Controller
