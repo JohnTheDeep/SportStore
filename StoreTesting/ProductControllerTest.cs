@@ -21,6 +21,24 @@ namespace StoreTesting
     public class ProductControllerTest
     {
         [Fact]
+        public void Test_Cart()
+        {
+            Product p1 = new Product(1,"P1","some descr",25,"Bananas");
+            Product p2 = new Product(2, "P2", "some descr", 15, "Bananas");
+            Product p3 = new Product(3, "P3", "some descr", 12.50M, "Bananas");
+
+            ShoppingCart _cart = new ShoppingCart();
+            _cart.AddItem(p1, 2);
+            _cart.AddItem(p2, 1);
+            _cart.AddItem(p3, 1);
+            CartLine[] results = _cart.Lines.ToArray();
+
+  
+            Assert.Equal(50.0M, _cart.CalculateTotalValue());
+
+
+        }
+        [Fact]
         public void Categories()
         {
             Mock<IProductRepository> mock = new Mock<IProductRepository>();
