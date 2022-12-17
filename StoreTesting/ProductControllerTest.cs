@@ -13,11 +13,30 @@ using Store.Infrastructure;
 using Microsoft.AspNetCore.Razor.TagHelpers;
 using System.Threading.Tasks;
 using Store.Models.ViewModels;
+using Store.Components;
+using Microsoft.AspNetCore.Mvc.ViewComponents;
 
 namespace StoreTesting
 {
     public class ProductControllerTest
     {
+        [Fact]
+        public void Categories()
+        {
+            Mock<IProductRepository> mock = new Mock<IProductRepository>();
+            mock.Setup(m => m.Products).Returns((new Product[] 
+            {
+                new Product{Id = 1, Name = "P1", Category = "Apples"},
+                new Product{Id = 1, Name = "P2", Category = "Apples"},
+                new Product{Id = 1, Name = "P3", Category = "Banannas"},
+                new Product{Id = 1, Name = "P4", Category = "Drugs"},
+                new Product{Id = 1, Name = "P5", Category = "Apples"},
+            }).AsQueryable);
+
+            NavigationMenuViewComponent target = new NavigationMenuViewComponent(mock.Object);
+            string[] values = (((IEnumerable<string>)(target.Invoke() as ViewViewComponentResult).ViewData.Model)).ToArray();
+            Assert.True(Enumerable.SequenceEqual(new string [] { "Apples", "Banannas", "Drugs" }, values));
+        }
         [Fact]
         public void Paging()
         {

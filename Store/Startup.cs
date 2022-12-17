@@ -27,12 +27,16 @@ namespace Store
             app.UseDeveloperExceptionPage();
             app.UseStatusCodePages();
             app.UseStaticFiles();
-            
             app.UseMvc(routes =>
             {
-                routes.MapRoute("pagination", "Products/Page{page}", new { Controller = "Product", Action = "List" });
-                routes.MapRoute("default","{controller=Product}/{action=List}");   
-            });
+                routes.MapRoute(null, "Products/{category}/Page{page:int}", new { Controller = "Product", Action = "List" });
+                routes.MapRoute(null, "Products/Page{page:int}", new { Controller = "Product", Action = "List", page = 1 });
+                routes.MapRoute(null, "Products/{category}", new { Controller = "Product", Action = "List" , page = 1});
+                routes.MapRoute(null, "Products", new { Controller = "Product", Action = "List", page = 1 });
+                //routes.MapRoute(null, "{controller}/{action}");
+                routes.MapRoute("default", "{controller=Product}/{action=List}");
+            }); 
+            
             SeedData.EnsurePopuldated(app);
         }
     }
