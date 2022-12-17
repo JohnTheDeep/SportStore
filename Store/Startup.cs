@@ -30,6 +30,7 @@ namespace Store
             
             app.UseMvc(routes =>
             {
+                routes.MapRoute("pagination", "Products/Page{page}", new { Controller = "Product", Action = "List" });
                 routes.MapRoute("default","{controller=Product}/{action=List}");   
             });
             SeedData.EnsurePopuldated(app);

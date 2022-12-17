@@ -1,13 +1,13 @@
 ﻿@model ProductListViewModel
-<h1 class="text-center">Welcome to my sport store!</h1>
-<div class="text-center">
-    @foreach(Product item in Model.Products)
-    {
-        <div>
-            <h3>@item.Name</h3>
-            @item.Description
-            <h4>@item.Price.ToString("c")</h4>
+    <div class="text-center">
+        <div style="justify-content:center">
+            @foreach (Product item in Model.Products)
+            {
+                @Html.Partial("ProductSummary", item);
+            }
         </div>
-    }
-</div>
-<div page-model="@Model.PagingInfo" page-action="List"></div>
+    </div>
+    <div page-model="@Model.PagingInfo" page-action="List" page-classes-enabled="true" page-class="btn" page-class-normal="btn-outline-secondary rounded-0 border-secondary"
+         page-class-selected="btn-outline-primary rounded-0 border-primary" style="padding:10px" class="btn-group -right m-1">
+
+    </div>

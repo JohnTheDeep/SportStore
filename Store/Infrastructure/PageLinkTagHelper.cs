@@ -20,6 +20,11 @@ namespace Store.Infrastructure
         public ViewContext ViewContext { get; set; }
         public PagingInfo PageModel { get; set; }
         public string PageAction { get; set; }
+
+        public bool PageClassesEnabled { get; set; } = false;
+        public string PageClass { get; set; }
+        public string PageClassNormal { get; set; }
+        public string PageClassSelected { get; set; }
         public override void Process(TagHelperContext context,TagHelperOutput output)
         {
             IUrlHelper urlHelper = _urlHelper.GetUrlHelper(ViewContext); 
@@ -27,13 +32,16 @@ namespace Store.Infrastructure
             for (int i = 1; i <= PageModel.TotalPages; i++)
             {
                 TagBuilder tag = new TagBuilder("a");
-                tag.Attributes["style"] = "padding:2px;";
                 tag.Attributes["href"] = urlHelper.Action(PageAction,
                 new { page = i });
+                if(PageClassesEnabled)
+                {
+                    tag.AddCssClass(PageClass);
+                    tag.AddCssClass(i == PageModel.CurrentPage ? PageClassSelected : PageClassNormal);
+                }
                 tag.InnerHtml.Append(i.ToString());
                 result.InnerHtml.AppendHtml(tag);
-                output.Attributes.Add("class", "text-center");
-                output.Attributes.Add("style", "display:block");
+
             }
             output.Content.AppendHtml(result.InnerHtml);
         }

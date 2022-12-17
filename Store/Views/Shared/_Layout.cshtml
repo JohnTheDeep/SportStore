@@ -4,19 +4,22 @@
 <head>
     <meta name="viewport" content="width=device-width" />
     <title>Sport's store</title>
-    <link rel="stylesheet" href="~/twitter-bootstrap/css/bootstrap.min.css" />
+    <link rel="stylesheet" 
+          asp-href-include="~/twitter-bootstrap/css/bootstrap.min.css"
+          asp-href-exclude="~/twitter-bootstrap/css/bootstrap-grid.css"/>
 </head>
 <body>
-    <header>
-        <div class="text-center">
-            <nav style="border-bottom: 2px solid lightgray; padding:20px; justify-content: flex-end;display:block" class="nav text-center">
-                <a href="#">Main</a>
-                <a href="#">Sport items</a>
-            </nav>
+    <div class="navbar navbar-expand bg-dark" role="navigation">
+        <a class="navbar navbar-brand" style="color:white; padding: 10px;font-family: Roboto">SPORT STORE</a>
+    </div>
+    <div class="row m-1 p-1">
+        <div id="categories" class="col-3">
+            Put something
         </div>
-    </header>
-    <div>
-        @RenderBody()
+
+        <div class="col-9">
+            @RenderBody()
+        </div>
     </div>
 </body>
 </html>
