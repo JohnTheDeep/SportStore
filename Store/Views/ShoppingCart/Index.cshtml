@@ -1,0 +1,43 @@
+﻿@model ShoppingCartIndexViewModel
+@{ 
+    var cul = new CultureInfo("en-US");
+}
+<h2>Your shopping cart</h2>
+<table class="table table-bordered table-striped">
+    <thead>
+        <tr>
+            <th>Item</th>
+            <th>Quantity</th>
+            <th class="text-right">Price</th>
+            <th class="text-right">Subtotal</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach(CartLine line in Model.Cart.Lines)
+            {
+                <tr>
+                    <td class="text-center">
+                        @line.Product.Name
+                    </td>
+                    <td class="text-left">
+                        @line.Quantity
+                    </td>
+                    <td class="text-right">
+                       @string.Format(cul, "{0:c}", @line.Product.Price.ToString());
+                    </td>
+                    <td class="text-right">
+                        @string.Format(cul, "{0:c}", ((line.Quantity * line.Product.Price)))
+                    </td>
+                </tr>
+            }
+    </tbody>
+    <tfoot>
+        <tr>
+            <td colspan="3" class="text-right">Total:</td>
+            <td class="text-right">@string.Format(cul,$"{Model.Cart.CalculateTotalValue():c}")</td>
+        </tr>
+    </tfoot>
+</table>
+<div class="text-center">
+    <a class="btn btn-primary" href="@Model.ReturnUrl">Continue shopping</a>
+</div>

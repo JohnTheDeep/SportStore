@@ -7,11 +7,16 @@
         <h4 style="text-align:start">
             @Model.Name
             <span class="badge badge-primary badge-pill bg-info" style="float:right">
-                <small style="color:black">@string.Format(formatProvider, "{0:c}", @Model.Price)</small>
+                <small style="color:black">
+                    @string.Format(formatProvider, "{0:c}", @Model.Price)
+                </small>
             </span>
         </h4>
     </div>
-    <form id="@Model.Id" asp-action="AddToCart" asp-controller="Cart" method="post">
+    <form id="@Model.Id" 
+          asp-action="AddToCart" 
+          asp-controller="ShoppingCart" 
+          method="post">
         <input type="hidden" asp-for="Id" name="_productId"/>
         <input type="hidden" name="_returnUrl" value="@ViewContext.HttpContext.Request.PathAndQuery()"/>
 

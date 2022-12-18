@@ -3,17 +3,21 @@ using Microsoft.AspNetCore.Http;
 using Store.Models;
 using Store.Models.Interfaces;
 using System.Linq;
-using Newtonsoft.Json;
 using Store.Infrastructure.Extensions;
+using Store.Models.ViewModels;
 
 namespace Store.Controllers
 {
-    public class CartController : Controller
+    public class ShoppingCartController : Controller
     {
         private IProductRepository _repos;
-        public CartController(IProductRepository repos)
+        public ShoppingCartController(IProductRepository repos)
         {
             this._repos = repos;
+        }
+        public ViewResult Index(string _returnUrl)
+        {
+            return View(new ShoppingCartIndexViewModel { Cart = GetCart(), ReturnUrl = _returnUrl });
         }
         public RedirectToActionResult AddToCart(int _productId, string _returnUrl)
         {

@@ -1,4 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Store.Infrastructure.Extensions;
+using Store.Models;
 using Store.Models.Interfaces;
 using Store.Models.ViewModels;
 using System.Linq;
@@ -11,6 +13,10 @@ namespace Store.Controllers
         public ProductController(IProductRepository repository)
         {
             this._repository = repository;
+        }
+        private ShoppingCart GetCart()
+        {
+            return HttpContext.Session.GetJson<ShoppingCart>("ShoppingCart") ?? new ShoppingCart();
         }
         public ViewResult List(string category,int page = 1)
         {
@@ -31,7 +37,8 @@ namespace Store.Controllers
                         //если category null - значит общее число товара в таблице, если category is not null - таблица фильтруется по категории и выводит количество товара
                         TotalItems = category == null ? _repository.Products.Count() : _repository.Products.Where(el => el.Category == category).Count()
                     },
-                    CurrentCategory = category
+                    CurrentCategory = category,
+                    Cart = GetCart()
                 })  ;
         }
     }
