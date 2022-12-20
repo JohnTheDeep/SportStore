@@ -8,6 +8,7 @@ using Store.Models.Interfaces;
 using Store.Models.Other;
 using Store.Models.Repository;
 using Store.Models;
+using Microsoft.AspNetCore.Http;
 
 namespace Store
 {
@@ -20,6 +21,8 @@ namespace Store
             services.AddDbContext<SportDbContext>
                 (opt => opt.UseSqlServer(_config["Data:SportStore:_defaultConnectionString"]));
             services.AddTransient<IProductRepository, EFProductRepository>();
+            services.AddScoped<ShoppingCart>(el => SessionShoppingCart.GetShoppingCart(el));
+            services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
             services.AddMvc();
             services.AddMemoryCache();
             services.AddSession();

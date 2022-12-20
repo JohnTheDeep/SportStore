@@ -3,17 +3,21 @@
     var cul = new CultureInfo("en-US");
 }
 <h2>Your shopping cart</h2>
-<table class="table table-bordered table-striped">
-    <thead>
-        <tr>
-            <th>Item</th>
-            <th>Quantity</th>
-            <th class="text-right">Price</th>
-            <th class="text-right">Subtotal</th>
-        </tr>
-    </thead>
-    <tbody>
-        @foreach(CartLine line in Model.Cart.Lines)
+<div style="padding:20px">
+    <table class="table table-bordered table-striped" >
+        <thead>
+            <tr>
+                <th>Item</th>
+                <th>Quantity</th>
+                <th class="text-right">Price</th>
+                <th class="text-right">Subtotal</th>
+                <th>
+
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (CartLine line in Model.Cart.Lines)
             {
                 <tr>
                     <td class="text-center">
@@ -23,21 +27,38 @@
                         @line.Quantity
                     </td>
                     <td class="text-right">
-                       @string.Format(cul, "{0:c}", @line.Product.Price.ToString());
+                        @line.Product.Price.ToString() $
                     </td>
-                    <td class="text-right">
-                        @string.Format(cul, "{0:c}", ((line.Quantity * line.Product.Price)))
+                    <td class="text-right ">
+                        @string.Format($"{(@line.Quantity * @line.Product.Price)} $")
+                    </td>
+                    <td>
+                        <form asp-action="RemoveFromCart" method="post">
+
+                            <input type="hidden" name="_productId" value="@line.Id" />
+
+                            <input type="hidden" name="_returnUrl" value="@Model.ReturnUrl" />
+
+                            <button type="submit" class="btn btn-sm btn-danger">
+                                Remove
+                            </button>
+                        </form>
                     </td>
                 </tr>
             }
-    </tbody>
-    <tfoot>
-        <tr>
-            <td colspan="3" class="text-right">Total:</td>
-            <td class="text-right">@string.Format(cul,$"{Model.Cart.CalculateTotalValue():c}")</td>
-        </tr>
-    </tfoot>
-</table>
+        </tbody>
+        <tfoot>
+            <tr>
+                <td class="text-right fw-bold">Total:</td>
+                <td></td>
+                <td></td>
+                <td class="text-right fw-bold">@Model.Cart.CalculateTotalValue().ToString() $</td>
+                <td></td>
+            </tr>
+        </tfoot>
+    </table>
+</div>
+
 <div class="text-center">
     <a class="btn btn-primary" href="@Model.ReturnUrl">Continue shopping</a>
 </div>

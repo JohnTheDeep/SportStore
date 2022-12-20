@@ -4,7 +4,9 @@ namespace Store.Infrastructure.Extensions
 {
     public static class UrlExtension 
     {
-        public static string PathAndQuery(this HttpRequest _request) =>
-            _request.QueryString.HasValue ? $"{_request.Path}{_request.QueryString}" : _request.Path.ToString();
+        public static string PathAndQuery(this HttpRequest _request)
+        {
+            return _request.QueryString.HasValue ? $"{_request.Path}{_request.QueryString}" : _request.Path.ToString();
+        }
     }
 }

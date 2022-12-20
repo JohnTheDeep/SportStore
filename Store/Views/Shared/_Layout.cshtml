@@ -6,20 +6,23 @@
     <link rel="stylesheet" 
           asp-href-include="~/twitter-bootstrap/css/bootstrap.min.css"
           asp-href-exclude="~/twitter-bootstrap/css/bootstrap-grid.css" />
-    <script src="~/twitter-bootstrap/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" asp-href-include="~/font-awesome/css/font-awesome.min.css"/>
+    <link rel="stylesheet" href="~/bootstrap/css/"/>
 </head>
 <body>
-    <div class="navbar navbar-expand bg-dark" role="navigation">
-        <a class="navbar navbar-brand" style="color:white; padding: 10px;font-family: Roboto">SPORT STORE</a>
-        <div style="width:100px; height:25px">
-            <h1 style="color:yellowgreen">@Model.Cart.Lines.Count</h1>
+    <div class="navbar navbar-inverse bg-info" role="navigation">
+        <div class="row">
+            <a class="col navbar-brand" href="#">SPORT STORE</a>
+
+        </div>
+        <div class="col-2 text-end border">
+            @await Component.InvokeAsync("ShoppingCartSummary")
         </div>
     </div>
     <div class="row m-1 p-1">
         <div id="categories" class="col-3">
             @await Component.InvokeAsync("NavigationMenu")
         </div>
-
         <div class="col-9">
             @RenderBody()
         </div>
