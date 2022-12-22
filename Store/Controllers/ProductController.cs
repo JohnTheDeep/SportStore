@@ -9,7 +9,7 @@ namespace Store.Controllers
     public class ProductController : Controller
     {
         private readonly IProductRepository _repository;
-        public int PageSize { get; set; } = 4;
+        public int PageSize { get; set; } = 20;
         public ProductController(IProductRepository repository)
         {
             this._repository = repository;

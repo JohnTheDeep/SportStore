@@ -12,41 +12,46 @@
         width : 100px;
     }*/
     .poop:hover{
-        transform: scaleX(1.05) scaleY(1.05);
+        transform: scaleX(1.02) scaleY(1.02);
     }
 </style>
-<div class="shadow card card-outline-primary m-1 p-1 poop border-0 rounded-0" style="background-color: #F4F9E9;">
+<div class="shadow card card-outline-primary m-1 poop border-0 rounded-0" style="margin:10px;width:250px;height:450px; background-color: #F4F9E9;">
+    <div class="text-center">
+        <img style="margin-top:10px;width:230px;height:225px;" src="~/misc/page-found-concept-illustration_114360-1869.png" />
+    </div>
+    <div style="margin-top:auto;margin-bottom:0;">
+        <div style="display: flex; font-family: Roboto;line-height:28px">
+            <div>
+                <span style="display: inline-block; vertical-align: middle; line-height: normal;">
+                    <h7 style="margin-left:10px;">
+                        @Model.Name
+                    </h7>
+                </span>
+            </div>
 
-    <div class="text-center" style="">
-        <img style="width:180px; height:300px" src="~/misc/05c79ee812c45a7535f749cf5e49e94e.png" />
-    </div>
-    <div >
-        <div style="display:flex">     
-            <h6>
-                @Model.Name
-            </h6>   
-            <span class="text-center badge badge-primary badge-pill" style="margin-left:auto;margin-right:0;background-color:greenyellow;">
-                <h10 style="color:black">
-                    @string.Format(formatProvider, "{0:c}", @Model.Price)
-                </h10>
-            </span>
+            <div style="background-color: skyblue; color: black; margin-left: auto; margin-right: 10px;">
+                <span class="badge badge-info" >
+                    <h10>
+                        @string.Format(formatProvider, "{0:c}", @Model.Price)
+                    </h10>
+                </span>
+            </div>
         </div>
-        <div>
-            <span class="text-start card-text p-1">
-                @Model.Description
+        <div style="margin:10px;">
+            <span class="card-text p-1" style="text-align:justify">
+             @Model.Description
             </span>
         </div>
     </div>
-    <div>
-        <form id="@Model.Id"
+        <form style="margin-top:auto;margin-bottom:0;" id="@Model.Id"
             asp-action="AddToCart"
             asp-controller="ShoppingCart"
             method="post">
                 <input type="hidden" asp-for="Id" name="_productId" />
                 <input type="hidden" name="_returnUrl" value="@ViewContext.HttpContext.Request.PathAndQuery()" />
-                <button type="submit" class="btn btn-primary btn-sm border-0 rounded-0" style="font-family:Roboto;width: 100%; background-color: #223843">
+                <button type="submit" class="btn btn-primary btn-sm rounded-0" style="border: 1px solid #223843; font-family: Roboto; width: 100%; background-color: #223843">
                     ADD TO CART
                 </button>
         </form>
-    </div>
+
 </div>

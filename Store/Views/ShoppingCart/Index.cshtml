@@ -35,7 +35,7 @@
                     <td>
                         <form asp-action="RemoveFromCart" method="post">
 
-                            <input type="hidden" name="_productId" value="@line.Id" />
+                            <input type="hidden" name="_productId" value="@line.Product.Id" />
 
                             <input type="hidden" name="_returnUrl" value="@Model.ReturnUrl" />
 
