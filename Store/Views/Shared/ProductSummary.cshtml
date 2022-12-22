@@ -2,29 +2,51 @@
 @{ 
     var formatProvider = new CultureInfo("en-US");
 }
-<div class="card card-outline-primary m-1 p-1" style="max-width:300px">
-    <div class="bg-faded p-1">
-        <h4 style="text-align:start">
-            @Model.Name
-            <span class="badge badge-primary badge-pill bg-info" style="float:right">
-                <small style="color:black">
-                    @string.Format(formatProvider, "{0:c}", @Model.Price)
-                </small>
-            </span>
-        </h4>
-    </div>
-    <form id="@Model.Id" 
-          asp-action="AddToCart" 
-          asp-controller="ShoppingCart" 
-          method="post">
-        <input type="hidden" asp-for="Id" name="_productId"/>
-        <input type="hidden" name="_returnUrl" value="@ViewContext.HttpContext.Request.PathAndQuery()"/>
+<style>
+    .poop{
+        transition: all 0.25s linear;
 
-        <span class="card-text p-1">
-            @Model.Description
-            <button type="submit" class="btn btn-success btn-sm -right" style="float:right">
-                Add to cart
-            </button>
-        </span>
-    </form>
+    }
+    /*.div-resized
+    {
+        width : 100px;
+    }*/
+    .poop:hover{
+        transform: scaleX(1.05) scaleY(1.05);
+    }
+</style>
+<div class="shadow card card-outline-primary m-1 p-1 poop border-0 rounded-0" style="background-color: #F4F9E9;">
+
+    <div class="text-center" style="">
+        <img style="width:180px; heigh:300px" src="~/misc/05c79ee812c45a7535f749cf5e49e94e.png" />
+    </div>
+    <div >
+        <div style="display:flex">     
+            <h6>
+                @Model.Name
+            </h6>   
+            <span class="text-center badge badge-primary badge-pill" style="margin-left:auto;margin-right:0;background-color:greenyellow;">
+                <h10 style="color:black">
+                    @string.Format(formatProvider, "{0:c}", @Model.Price)
+                </h10>
+            </span>
+        </div>
+        <div>
+            <span class="text-start card-text p-1">
+                @Model.Description
+            </span>
+        </div>
+    </div>
+    <div>
+        <form id="@Model.Id"
+            asp-action="AddToCart"
+            asp-controller="ShoppingCart"
+            method="post">
+                <input type="hidden" asp-for="Id" name="_productId" />
+                <input type="hidden" name="_returnUrl" value="@ViewContext.HttpContext.Request.PathAndQuery()" />
+                <button type="submit" class="btn btn-primary btn-sm border-0 rounded-0" style="font-family:Roboto;width: 100%; background-color: #223843">
+                    ADD TO CART
+                </button>
+        </form>
+    </div>
 </div>

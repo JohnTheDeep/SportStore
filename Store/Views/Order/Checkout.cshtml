@@ -1,0 +1,76 @@
+﻿@model Order
+
+<style>
+    .validation-summary-valid{
+        visibility:hidden;
+    }
+</style>
+<div class="text-center" style="display:flex;align-items: center; justify-content: center; ">
+
+    <div style="display: flex">
+        <form class="text-center " style="width: 500px" asp-controller="Order" asp-action="Checkout" method="post">
+            <h1>Confirm order</h1>
+
+            <h5 class="text-center">Shipping information</h5>
+
+            <div class="form-floating mb-2">
+
+                <input id="fi_Name"
+                       placeholder="Name"
+                       class="form-control"
+                       asp-for="Name" />
+                <label for="fi_Name">Name</label>
+            </div>
+
+            <h5 class="text-center">Adress information</h5>
+            <div class="form-floating mb-2">
+                <input id="fi_line1" placeholder="Line 1" class="form-control" asp-for="AdressLine_1" />
+                <label for="fi_line1">Line 1</label>
+            </div>
+
+            <div class="form-floating mb-2">
+                <input id="fi_line2" placeholder="Line2" class="form-control" asp-for="AdressLine_2" />
+                <label for="fi_line2">Line 2</label>
+            </div>
+
+            <div class="form-floating mb-2">
+                <input id="fi_line3" placeholder="Line3" class="form-control" asp-for="AdressLine_3" />
+                <label for="fi_line3">Line 3</label>
+            </div>
+
+            <div class="form-floating mb-2">
+                <input id="fi_country" placeholder="Country" class="form-control" asp-for="Country" />
+                <label for="fi_country">Country</label>
+            </div>
+
+            <div class="form-floating mb-2">
+                <input id="fi_State" placeholder="State" class="form-control" asp-for="State" />
+                <label for="fi_State">State</label>
+            </div>
+
+            <div class="form-floating mb-2">
+                <input id="fi_city" placeholder="City" class="form-control" asp-for="City" />
+                <label for="fi_city">City</label>
+            </div>
+
+            <div class="form-floating mb-2">
+                <input id="fi_Zip" placeholder="Zip" class="form-control" asp-for="Zip" />
+                <label for="fi_Zip">Zip</label>
+            </div>
+            <h4>Options</h4>
+            <div class="">
+                <p style="font-size: 15px;">
+                    <input class="form-check-input" type="checkbox" asp-for="GiftWrap" /> Gift wrap this items
+                </p>
+            </div>
+            <div class="card text-danger" style="background-color: whitesmoke; padding: 25px; " asp-validation-summary="All">
+            </div>
+            <div class="text-center" style="padding-top: 10px">
+                <button type="submit" class="btn btn-primary" style="width: 150px;">Pay</button>
+                <button type="reset" class="btn btn-primary" style="width: 150px;">Cancel</button>
+            </div>
+
+        </form>
+    </div>
+
+</div>

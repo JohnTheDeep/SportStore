@@ -37,7 +37,6 @@ namespace Store.Controllers
             Product _product = _repos.Products.FirstOrDefault(el => el.Id == _productId);
             if (_product != null)
             {
-                
                 _cart.RemoveLine(_product);
             }
             return RedirectToAction("Index", new { _returnUrl });

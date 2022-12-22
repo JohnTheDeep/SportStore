@@ -7,26 +7,38 @@
           asp-href-include="~/twitter-bootstrap/css/bootstrap.min.css"
           asp-href-exclude="~/twitter-bootstrap/css/bootstrap-grid.css" />
     <link rel="stylesheet" asp-href-include="~/font-awesome/css/font-awesome.min.css"/>
-    <link rel="stylesheet" href="~/bootstrap/css/"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.2/font/bootstrap-icons.css">
+    <link rel="icon" href="/misc//running.png"/>
 </head>
-<body>
-    <div class="navbar navbar-inverse bg-info" role="navigation">
-        <div class="row">
-            <a class="col navbar-brand" href="#">SPORT STORE</a>
-
+<body style="background-color:#EEF0EB">
+    <nav class="navbar sticky-top navbar-dark bg-dark" role="navigation">
+        <div>
+            <img class="col" style="margin-left: 20px;" src="/misc/running.png" width="50" height="35" />
+            <a class="col navbar-brand" style="margin-left:5px;font-family: Roboto; font-style: italic" href="#">FAST BOOTS</a>
         </div>
-        <div class="col-2 text-end border">
+        <div class="col-2 text-end " style="margin-right: 20px">
             @await Component.InvokeAsync("ShoppingCartSummary")
         </div>
+    </nav>
+    <div class="row">
+        <nav class="border-bottom" style="height:auto; font-family:Roboto; font-style:italic">
+            <div class="text-center">
+                <h2>New incomming to-night!</h2>
+                @*<img src="~/misc/maxresdefault.jpg"/>*@
+            </div>
+        </nav>
     </div>
     <div class="row m-1 p-1">
-        <div id="categories" class="col-3">
-            @await Component.InvokeAsync("NavigationMenu")
+        <div id="categories" class="col-auto">
+            <div class="">
+                @await Component.InvokeAsync("NavigationMenu")
+            </div>
         </div>
-        <div class="col-9">
+        <div class="col" style="margin-top:25px">
             @RenderBody()
         </div>
     </div>
+
 </body>
 
 </html>

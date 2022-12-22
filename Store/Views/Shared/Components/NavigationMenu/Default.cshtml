@@ -1,23 +1,26 @@
 ﻿@model IEnumerable<string>
 
-<a class="btn btn-block btn-secondary a_1" 
-   asp-action="List" 
-   asp-controller="Product" 
-   asp-route-category="">
-    Home
-</a>
+
 <style>
     .a_1{
         padding:5px;
     }
 </style>
-@foreach(string str in Model)
-{
-    <a class="btn btn-block a_1 @(str == ViewBag.SelectedCategory? "btn-primary" : "btn-secondary")" 
-    asp-action="List"
-    asp-controller="Product"
-    asp-route-category="@str" 
-    asp-route-page="1">
-    @str
+<div class="" style="display:grid; justify-content:space-between">
+    <a class="btn btn-block btn-secondary a_1 rounded-0"
+       asp-action="List"
+       asp-controller="Product"
+       asp-route-category="" style="width:200px; margin:1px">
+        Home
     </a>
-}
+    @foreach (string str in Model)
+    {
+        <a class="btn btn-block a_1 @(str == ViewBag.SelectedCategory? "btn-primary" : "btn-secondary") rounded-0"
+           asp-action="List"
+           asp-controller="Product"
+           asp-route-category="@str"
+           asp-route-page="1" style="width:200px; margin:1px">
+            @str
+        </a>
+    }
+</div>

@@ -1,9 +1,9 @@
 ﻿@model ShoppingCart
 
-<div>
+<div >
     @if(Model.Lines.Count() > 0)
         {
-            <small class="navbar-text">
+            <small class="navbar-text" style="color:white">
                 <b>Total:</b>
                 @Model.Lines.Sum(x => x.Quantity) item(s)
                 <small class="fw-bold">@Model.CalculateTotalValue().ToString() $</small>
@@ -14,11 +14,11 @@
    asp-route-returnurl="@ViewContext.HttpContext.Request.PathAndQuery()">
     @if (Model.Lines.Count() > 0)
     {
-        <i class=""></i>
+        <i class="bi bi-cart-plus-fill"></i>
     }
     else
     {
-        <i class=""></i>
+        <i class="bi bi-cart-plus"></i>
     }
 </a>
 </div>
