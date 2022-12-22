@@ -9,36 +9,99 @@
     <link rel="stylesheet" asp-href-include="~/font-awesome/css/font-awesome.min.css"/>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.2/font/bootstrap-icons.css">
     <link rel="icon" href="/misc//running.png"/>
+    <style>
+        .container2 {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            padding: 10px;
+        }
+    </style>
 </head>
 <body style="background-color:#EEF0EB">
     <nav class="navbar sticky-top navbar-dark bg-dark" role="navigation">
         <div>
-            <img class="col" style="margin-left: 20px;" src="/misc/running.png" width="50" height="35" />
-            <a class="col navbar-brand" style="margin-left:5px;font-family: Roboto; font-style: italic" href="#">FAST BOOTS</a>
+            <a class="col navbar-brand" style="margin-left:25px;font-family:  'Storm Gust'; font-style: italic" href="#">South Yard</a>
         </div>
         <div class="col-2 text-end " style="margin-right: 20px">
             @await Component.InvokeAsync("ShoppingCartSummary")
         </div>
     </nav>
-    <div class="row">
-        <nav class="border-bottom" style="height:auto; font-family:Roboto; font-style:italic">
+    @{ if ((ViewContext.View).Path.Contains("List.cshtml"))
+        {
             <div class="text-center">
-                <h2>New incomming to-night!</h2>
-                @*<img src="~/misc/maxresdefault.jpg"/>*@
-            </div>
-        </nav>
-    </div>
-    <div class="row m-1 p-1">
-        <div id="categories" class="col-auto">
-            <div class="">
-                @await Component.InvokeAsync("NavigationMenu")
-            </div>
-        </div>
-        <div class="col" style="margin-top:25px">
-            @RenderBody()
-        </div>
-    </div>
+                <div style="margin-left: auto; margin-right: auto; width: 1300px; height: 532px">
 
+                    <img style="width: 1300px; height: 532px" src="~/misc/fatbanner.png" />
+                </div>
+            </div>
+        }
+    }
+
+    <div class="row m-1 p-1">
+        <section style="width:1200px;margin-left:auto;margin-right:auto;">
+            <div style="display:flex">
+                <div id="categories" class="col-auto" style="margin-top:37.5px">
+                    <div class="">
+                        @await Component.InvokeAsync("NavigationMenu")
+                    </div>
+                </div>
+                <div class="col" style="margin-top:25px">
+                    @RenderBody()
+                </div>
+            </div>
+        </section>
+    </div>
+    <footer style="height: 500px; background-color: #223843;">
+        <h1 style="text-align:center;color:white;font-family:Roboto;">Contacts</h1>
+
+        <div class="container2" style="justify-content:center;">
+            <div style="display:flex">
+                <div style="margin:25px;width:200px;height:100px;">
+                    <div style="font-family:Roboto" class="shadow card card-outline-primary m-1 poop border-0 rounded-0">
+                        <h1 class="text-center">CEO</h1>
+                        <img style="width: 170px; height: 170px; margin: 5px auto 5px auto " src="https://media.pitchfork.com/photos/62043c007db00b3b97548cb5/1:1/w_1000,h_1000,c_limit/Snoop%20Dogg.jpg" />
+                        <div>
+                            <h6 class="text-center">Snoop Dogg</h6>
+                        </div>
+                        <div class="text-center" style="margin:5px">
+                            <h10 style="font-weight:100">
+                                Husband,Famous Crip and just a good guy!
+                            </h10>
+                        </div>
+                    </div>
+                </div>
+                <div style="margin:25px;width:200px;height:100px;">
+                    <div style="font-family:Roboto" class="shadow card card-outline-primary m-1 poop border-0 rounded-0">
+                        <h1 class="text-center">CEO</h1>
+                            <img style="width: 170px; height: 170px; margin: 5px auto 5px auto" src="https://static.onecms.io/wp-content/uploads/sites/6/2014/06/ice-cube-1.jpg" />
+                        <div>
+                            <h6 class="text-center">Snoop Dogg</h6>
+                        </div>
+                        <div class="text-center" style="margin:5px">
+                            <h10 style="font-weight:100">
+                                Husband,Famous Crip and just a good guy!
+                            </h10>
+                        </div>
+                    </div>
+                </div>
+                <div style="margin:25px;width:200px;height:100px;">
+                    <div style="font-family:Roboto" class="shadow card card-outline-primary m-1 poop border-0 rounded-0">
+                        <h1 class="text-center">CEO</h1>
+                            <img style="width: 170px; height: 170px; margin: 5px auto 5px auto" src="https://i1.sndcdn.com/artworks-000124588020-bg2he5-t500x500.jpg" />
+                        <div>
+                            <h6 class="text-center">Snoop Dogg</h6>
+                        </div>
+                        <div class="text-center" style="margin:5px">
+                            <h10 style="font-weight:100">
+                                Husband,Famous Crip and just a good guy!
+                            </h10>
+                        </div>
+                    </div>
+                </div>  
+            </div>
+        </div>
+    </footer>
 </body>
 
 </html>
