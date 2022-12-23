@@ -17,6 +17,18 @@ namespace Store.Controllers
             this._repos = repos;
             this._cart = cart;
         }
+        public ViewResult List() => View(_repos.Orders.Where(el => !el.Shipped));
+        [HttpPost]
+        public IActionResult MarkShipped(int orderId)
+        {
+            Order order = _repos.Orders.FirstOrDefault(el=>el.Id == orderId);
+            if(order != null)
+            {
+                order.Shipped = true;
+                _repos.SaveOrder(order);
+            }
+            return RedirectToAction(nameof(List));
+        }
         public IActionResult Checkout() => View(new Order());
         [HttpPost]
         public IActionResult Checkout(Order order)

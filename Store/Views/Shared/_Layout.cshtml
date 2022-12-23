@@ -16,9 +16,17 @@
             justify-content: center;
             padding: 10px;
         }
+
+        .paddin_style{
+            padding: 5px;
+            text-decoration:none;
+            background-color: transparent;
+            color:white
+        }
+
     </style>
 </head>
-<body style="background-color:#EEF0EB">
+<body style="background-color: #EEF0EB; min-height: 100vh; display: flex; flex-direction: column;">
     <nav class="navbar sticky-top navbar-dark bg-dark" role="navigation">
         <div>
             <a class="col navbar-brand" style="margin-left:25px;font-family:  'Storm Gust'; font-style: italic" href="#">South Yard</a>
@@ -30,9 +38,9 @@
     @{ if ((ViewContext.View).Path.Contains("List.cshtml"))
         {
             <div class="text-center">
-                <div style="margin-left: auto; margin-right: auto; width: 1300px; height: 532px">
+                <div style="margin-left: auto; margin-right: auto; width: 1300px; height: 500px">
 
-                    <img style="width: 1300px; height: 532px" src="~/misc/fatbanner.png" />
+                    <img style="width: 1200px; height: 500px" src="~/misc/bannernike.png" />
                 </div>
             </div>
         }
@@ -52,53 +60,41 @@
             </div>
         </section>
     </div>
-    <footer style="height: 500px; background-color: #223843;">
-        <h1 style="text-align:center;color:white;font-family:Roboto;">Contacts</h1>
-
-        <div class="container2" style="justify-content:center;">
-            <div style="display:flex">
-                <div style="margin:25px;width:200px;height:100px;">
-                    <div style="font-family:Roboto" class="shadow card card-outline-primary m-1 poop border-0 rounded-0">
-                        <h1 class="text-center">CEO</h1>
-                        <img style="width: 170px; height: 170px; margin: 5px auto 5px auto " src="https://media.pitchfork.com/photos/62043c007db00b3b97548cb5/1:1/w_1000,h_1000,c_limit/Snoop%20Dogg.jpg" />
-                        <div>
-                            <h6 class="text-center">Snoop Dogg</h6>
+    <footer style="background-color: #223843;margin-top:auto;">
+            <div class="container2" style="justify-content:center">
+                <div style="color:white;padding: 25px; display: flex; justify-content: center">
+                    <div style="width:250px;">
+                        <div style="justify-content:center;color:white;display:grid;padding:10px;">
+                            <h5 class="paddin_style">Header</h5>
+                            <a href="#" class="paddin_style aa">Some link 1</a>
+                            <a href="#" class="paddin_style aa">Some link 2</a>
+                            <a href="#" class="paddin_style aa">Some link 3</a>
+                            <a href="#" class="paddin_style aa">Some link 4</a>
                         </div>
-                        <div class="text-center" style="margin:5px">
-                            <h10 style="font-weight:100">
-                                Husband,Famous Crip and just a good guy!
-                            </h10>
+                    </div>
+                    <div style=" width: 250px; ">
+                        <div style="justify-content:center;color:white;display:grid;padding:10px;">
+                            <h5 class="paddin_style">Header</h5>
+                            <a href="#" class="paddin_style aa">Some link 1</a>
+                            <a href="#" class="paddin_style aa">Some link 2</a>
+                            <a href="#" class="paddin_style aa">Some link 3</a>
+                            <a href="#" class="paddin_style aa">Some link 4</a>
+                        </div>
+                    </div>
+                    <div style=" width: 250px; ">
+                        <div style="justify-content:center;color:white;display:grid;padding:10px;">
+                            <h5 class="paddin_style">Header</h5>
+                            <a href="#" class="paddin_style aa">Some link 1</a>
+                            <a href="#" class="paddin_style aa">Some link 2</a>
+                            <a href="#" class="paddin_style aa">Some link 3</a>
+                            <a href="#" class="paddin_style aa">Some link 4</a>
                         </div>
                     </div>
                 </div>
-                <div style="margin:25px;width:200px;height:100px;">
-                    <div style="font-family:Roboto" class="shadow card card-outline-primary m-1 poop border-0 rounded-0">
-                        <h1 class="text-center">CEO</h1>
-                            <img style="width: 170px; height: 170px; margin: 5px auto 5px auto" src="https://static.onecms.io/wp-content/uploads/sites/6/2014/06/ice-cube-1.jpg" />
-                        <div>
-                            <h6 class="text-center">Snoop Dogg</h6>
-                        </div>
-                        <div class="text-center" style="margin:5px">
-                            <h10 style="font-weight:100">
-                                Husband,Famous Crip and just a good guy!
-                            </h10>
-                        </div>
-                    </div>
-                </div>
-                <div style="margin:25px;width:200px;height:100px;">
-                    <div style="font-family:Roboto" class="shadow card card-outline-primary m-1 poop border-0 rounded-0">
-                        <h1 class="text-center">CEO</h1>
-                            <img style="width: 170px; height: 170px; margin: 5px auto 5px auto" src="https://i1.sndcdn.com/artworks-000124588020-bg2he5-t500x500.jpg" />
-                        <div>
-                            <h6 class="text-center">Snoop Dogg</h6>
-                        </div>
-                        <div class="text-center" style="margin:5px">
-                            <h10 style="font-weight:100">
-                                Husband,Famous Crip and just a good guy!
-                            </h10>
-                        </div>
-                    </div>
-                </div>  
+            </div>
+        <div style="color:white;justify-content:center;padding-bottom:5px;" class="text-center">
+            <div style="display:inline-flex">
+                <h10><a>© SouthYard 2022</a></h10>
             </div>
         </div>
     </footer>

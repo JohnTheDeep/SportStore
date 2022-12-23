@@ -11,6 +11,8 @@ namespace Store.Models
         public int Id { get; set; }
         [BindNever]
         public ICollection<CartLine> Lines { get; set; }
+        [BindNever]
+        public bool Shipped { get; set; }
         [Required(ErrorMessage = "Name field cannt be empty!")]
         public string Name { get; set; }
         public string AdressLine_1 { get; set; }
