@@ -1,0 +1,40 @@
+﻿@model Product
+
+@{ 
+    ViewBag.Title = "Edit product";
+    Layout = "_AdminLayout";
+}
+<head>
+
+</head>
+<body>
+    <div class="container" style="display:flex;justify-content:center">
+        <form style="width:500px" asp-action="Edit" method="post">
+            <input type="hidden" asp-for="Id" />
+            <div class="form-group">
+                <label asp-for="Name"></label>
+                <input asp-for="Name" class="form-control" />
+                <div><span asp-validation-for="Name" class="text-danger"></span></div>
+            </div>
+            <div class="form-group">
+                <label asp-for="Category"></label>
+                <input asp-for="Category" class="form-control" />
+                <div><span asp-validation-for="Category" class="text-danger"></span></div>
+            </div>
+            <div class="form-group">
+                <label asp-for="Description"></label>
+                <input asp-for="Description" class="form-control" />
+                <div><span asp-validation-for="Description" class="text-danger"></span></div>
+            </div>
+            <div class="form-group">
+                <label asp-for="Price"></label>
+                <input asp-for="Price" class="form-control" />
+                <div><span asp-validation-for="Price" class="text-danger"></span></div>
+            </div>
+            <div class="form-group" style="padding-top:5px">
+                <button asp-action="Edit" type="submit" class="btn btn-primary">Save</button>
+                <button asp-action="Index"   class="btn btn-danger">Cancel</button>
+            </div>
+        </form>
+    </div>
+</body>

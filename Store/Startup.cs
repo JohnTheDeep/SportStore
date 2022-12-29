@@ -9,6 +9,7 @@ using Store.Models.Other;
 using Store.Models.Repository;
 using Store.Models;
 using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Identity;
 
 namespace Store
 {
@@ -21,6 +22,18 @@ namespace Store
             services.AddDbContext<SportDbContext>
                 (opt => opt.UseSqlServer(_config["Data:SportStore:_defaultConnectionString"]));
             services.AddTransient<IProductRepository, EFProductRepository>();
+            services.AddDbContext<IdentityContext>
+                (options => options.UseSqlServer(_config["Data:SportStoreIdentity:_defaultConnectionString"]));
+
+            services.AddIdentity<IdentityUser, IdentityRole>(el=> 
+            {
+                el.Password.RequiredLength = 5;
+                el.Password.RequireNonAlphanumeric = false;
+                el.Password.RequireDigit = false;
+                el.Password.RequireUppercase = false;
+            }).
+                AddEntityFrameworkStores<IdentityContext>().
+                AddDefaultTokenProviders();
 
             services.AddScoped<ShoppingCart>(el => SessionShoppingCart.GetShoppingCart(el));
             services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
@@ -35,7 +48,9 @@ namespace Store
             app.UseDeveloperExceptionPage();
             app.UseStatusCodePages();
             app.UseStaticFiles();
-            app.UseSession();
+            app.UseSession(); 
+            app.UseAuthentication();
+
             app.UseMvc(routes =>
             {
                 routes.MapRoute(null, "Products/{category}/Page{page:int}", new { Controller = "Product", Action = "List" });
@@ -46,6 +61,7 @@ namespace Store
                 routes.MapRoute("default", "{controller=Product}/{action=List}");
             });
             SeedData.EnsurePopuldated(app);
+            IdentitySeedData.EnsurePopulated(app);
         }
     }
 }

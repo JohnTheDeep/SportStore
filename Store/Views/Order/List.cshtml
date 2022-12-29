@@ -5,22 +5,65 @@
     Layout = "_AdminLayout";
 }
 <body>
-    @if (Model.Count() > 0)
-    {
+    <div style="margin: 25px">
+        @if (Model.Count() > 0)
+        {
         <table class="table table-bordered table-striped">
-            <thead>
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Country</th>
+                <th>State</th>
+                <th>City</th>
+                <th>Zip</th>
+                <th>Adress(Line 1)</th>
+                <th>Adress(Line 2)</th>
+                <th>Adress(Line 3)</th>
+                <th>Gift?</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (Order order in Model)
+            {
                 <tr>
-                    <th>Name</th>
-                    <th>Country</th>
-                    <th>State</th>
-                    <th>City</th>
-                    <th>Zip</th>
-                    <th>Adress(Line 1)</th>
-                    <th>Adress(Line 1)</th>
-                    <th>Adress(Line 1)</th>
-                    <th>Gift?</th>
+                    <td>@order.Name</td>
+                    <td>@order.Country</td>
+                    <td>@order.State</td>
+                    <td>@order.City</td>
+                    <td>@order.Zip</td>
+                    <td>@order.AdressLine_1</td>
+                    <td>@order.AdressLine_2</td>
+                    <td>@order.AdressLine_3</td>
+                    @if (@order.GiftWrap)
+                    {
+                        <td>Yes</td>
+                    }
+                    else 
+                    { 
+                        <td>No</td>
+                    }
+                    <td>
+                        <form asp-action="MarkShipped" method="post">
+                            <input type="hidden" name="orderId" value="@order.Id" />
+                            <button class="btn btn-primary" type="submit">Shipped</button>
+                        </form>
+                    </td>
                 </tr>
-            </thead>
+                @foreach (CartLine line in order.Lines)
+                {
+                    <tr>
+                        <td colspan="3"></td>
+                        <td>@line.Product.Name</td>
+                        <td>@line.Product.Category</td>
+                        <td>@line.Product.Price</td>
+                        <td>@line.Quantity</td>
+                        <td style="font-weight:bold">@(line.Product.Price * line.Quantity) $</td>
+                    </tr>
+                }
+            }
+            </tbody>
         </table>
-    }
+        }
+    </div>
 </body>

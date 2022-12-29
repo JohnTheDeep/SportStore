@@ -1,10 +1,8 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using Store.Models;
 using Store.Models.Interfaces;
-using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Threading.Tasks;
 
 namespace Store.Controllers
 {
@@ -17,7 +15,9 @@ namespace Store.Controllers
             this._repos = repos;
             this._cart = cart;
         }
+        [Authorize]
         public ViewResult List() => View(_repos.Orders.Where(el => !el.Shipped));
+        [Authorize]
         [HttpPost]
         public IActionResult MarkShipped(int orderId)
         {
