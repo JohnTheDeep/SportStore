@@ -12,10 +12,14 @@ namespace Store.Models.Other
         public static async void EnsurePopulated(IApplicationBuilder app)
         {
             UserManager<IdentityUser> userManager = app.ApplicationServices.GetRequiredService<UserManager<IdentityUser>>();
+            RoleManager<IdentityRole> roleManager = app.ApplicationServices.GetRequiredService<RoleManager<IdentityRole>>();
             IdentityUser user = await userManager.FindByNameAsync(adminUser);
-            
-                user = new IdentityUser("admin2");
-                var result = await userManager.CreateAsync(user, adminPassword);
+            var role = new IdentityRole { Name = "Admin" };
+            var res = await roleManager.CreateAsync(role);
+
+            var result = await userManager.AddToRoleAsync(user, role.Name);
+            var us = await userManager.FindByNameAsync("admin");
+            var rol = await roleManager.FindByNameAsync("Admin");
             
         }
     }

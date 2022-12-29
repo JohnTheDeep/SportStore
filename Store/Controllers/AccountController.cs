@@ -16,7 +16,7 @@ namespace Store.Controllers
         {
             this.userManager = usrMngr;
             this.signInManager = sginMngr;
-            ViewBag.Count = userManager.
+            
         }
 
         [AllowAnonymous]

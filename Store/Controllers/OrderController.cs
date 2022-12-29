@@ -15,8 +15,11 @@ namespace Store.Controllers
             this._repos = repos;
             this._cart = cart;
         }
-        [Authorize]
-        public ViewResult List() => View(_repos.Orders.Where(el => !el.Shipped));
+        [Authorize(Roles = "Admin")]
+        public ViewResult List() 
+        {
+            return View(_repos.Orders.Where(el => !el.Shipped));    
+        }
         [Authorize]
         [HttpPost]
         public IActionResult MarkShipped(int orderId)
