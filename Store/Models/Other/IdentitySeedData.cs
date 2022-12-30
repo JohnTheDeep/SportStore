@@ -19,7 +19,7 @@ namespace Store.Models.Other
 
             var result = await userManager.AddToRoleAsync(user, role.Name);
             var us = await userManager.FindByNameAsync("admin");
-            var rol = await roleManager.FindByNameAsync("Admin");
+            var rol = await roleManager.FindByNameAsync("Admin"); 
             
         }
     }
