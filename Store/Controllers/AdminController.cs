@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Store.Models;
 using Store.Models.Interfaces;
+using Store.Models.Other;
 using System;
 using System.Linq;
 
@@ -12,6 +13,12 @@ namespace Store.Controllers
         public AdminController(IProductRepository repos)
         {
             this._repos = repos;
+        }
+        [HttpPost]
+        public IActionResult SeedDatabase()
+        {
+            SeedData.EnsurePopulated(HttpContext.RequestServices);
+            return RedirectToAction(nameof(Index));
         }
         public ViewResult Index() => View(_repos.Products);
         [HttpPost]

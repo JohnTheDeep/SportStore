@@ -12,12 +12,8 @@ namespace Store.Models.Other
         public static void EnsurePopulated(IServiceProvider services)
         {
             SportDbContext _context = services.GetRequiredService<SportDbContext>();
-        }
-        public static void EnsurePopuldated(IApplicationBuilder app)
-        {
-            SportDbContext _context = app.ApplicationServices.GetRequiredService<SportDbContext>();
-            _context.Database.Migrate();
-            if(!_context.ProductT.Any())
+            //_context.Database.Migrate();
+            if(_context.ProductT.Any())
             {
                 _context.ProductT.AddRange(
                     new Product { Name = "Tennis rocket", Price = 0, Category = "Tennis rocket's", Description = "Some Description" },

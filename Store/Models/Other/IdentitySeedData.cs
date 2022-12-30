@@ -12,7 +12,6 @@ namespace Store.Models.Other
         public static async Task EnsurePopulated(UserManager<IdentityUser> userManager)
         {
             IdentityUser user = await userManager.FindByNameAsync(adminUser);
-            throw new System.Exception();
         }
     }
 }
