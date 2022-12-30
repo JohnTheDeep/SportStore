@@ -11,7 +11,7 @@ namespace Store.Models
         [Required(ErrorMessage = "Description cannot be empty")]
         public string Description { get; set; }
         [Required]
-        [Range(0.10, double.MaxValue, ErrorMessage = "Enter a positiva value (and value must be greaten 0.10 )")]
+        [Range(0,99999999, ErrorMessage = "Enter a positiva value (and value must be greaten 0.10 )")]
         public decimal Price { get; set; }
         [Required(ErrorMessage = "Specify a category")]
         public string Category { get; set; }

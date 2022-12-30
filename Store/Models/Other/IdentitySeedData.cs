@@ -1,7 +1,7 @@
 ﻿using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.Extensions.DependencyInjection;
-using Store.Models.ApplicationDbContext;
+using System.Threading.Tasks;
 
 namespace Store.Models.Other
 {
@@ -9,18 +9,10 @@ namespace Store.Models.Other
     {
         private const string adminUser = "admin2";
         private const string adminPassword = "rooot";
-        public static async void EnsurePopulated(IApplicationBuilder app)
+        public static async Task EnsurePopulated(UserManager<IdentityUser> userManager)
         {
-            UserManager<IdentityUser> userManager = app.ApplicationServices.GetRequiredService<UserManager<IdentityUser>>();
-            RoleManager<IdentityRole> roleManager = app.ApplicationServices.GetRequiredService<RoleManager<IdentityRole>>();
             IdentityUser user = await userManager.FindByNameAsync(adminUser);
-            var role = new IdentityRole { Name = "Admin" };
-            var res = await roleManager.CreateAsync(role);
-
-            var result = await userManager.AddToRoleAsync(user, role.Name);
-            var us = await userManager.FindByNameAsync("admin");
-            var rol = await roleManager.FindByNameAsync("Admin"); 
-            
+            throw new System.Exception();
         }
     }
 }

@@ -45,8 +45,8 @@ namespace Store
 
         public void Configure(IApplicationBuilder app, IHostingEnvironment env)
         {
-            app.UseDeveloperExceptionPage();
-            app.UseStatusCodePages();
+            
+            app.UseExceptionHandler("/Error/Index");
             app.UseStaticFiles();
             app.UseSession(); 
             app.UseAuthentication();
@@ -59,9 +59,7 @@ namespace Store
                 routes.MapRoute(null, "Products", new { Controller = "Product", Action = "List", page = 1 });
                 //routes.MapRoute(null, "{controller}/{action}");
                 routes.MapRoute("default", "{controller=Product}/{action=List}");
-            });
-            SeedData.EnsurePopuldated(app);
-            IdentitySeedData.EnsurePopulated(app);
+            }); 
         }
     }
 }

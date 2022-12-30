@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
+using Store.Models.Other;
 using Store.Models.ViewModels;
 using System.Threading.Tasks;
 
@@ -16,7 +17,7 @@ namespace Store.Controllers
         {
             this.userManager = usrMngr;
             this.signInManager = sginMngr;
-            
+            IdentitySeedData.EnsurePopulated(userManager).Wait();
         }
 
         [AllowAnonymous]
