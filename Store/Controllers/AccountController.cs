@@ -17,7 +17,7 @@ namespace Store.Controllers
         {
             this.userManager = usrMngr;
             this.signInManager = sginMngr;
-            IdentitySeedData.EnsurePopulated(userManager).Wait();
+            //IdentitySeedData.EnsurePopulated(userManager).Wait();
         }
 
         [AllowAnonymous]

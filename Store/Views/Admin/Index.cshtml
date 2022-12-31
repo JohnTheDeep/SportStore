@@ -4,7 +4,11 @@
     ViewBag.Title = "Products catalog";
     Layout = "_AdminLayout";
 }
-
+<div class="text-center">
+    <form asp-action="SeedDatabase" asp-controller="Admin" method="post">
+        <button type="submit" class="btn btn-danger">Seed Database</button>
+    </form>
+</div>
 <div style="margin:25px 25px">
     <form asp-controller="Admin" asp-action="Create" method="get">
         <button class="btn btn-primary" style="margin:0 0 5px 0">add new product</button>
